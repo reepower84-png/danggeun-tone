@@ -225,6 +225,26 @@
   }
   .btn-primary svg { width: 20px; height: 20px; flex: none; }
 
+  /* 메인 문구 + 보조 안내를 두 줄로. 한 줄로 넣으면 좁은 화면에서 어색하게 끊긴다. */
+  .btn-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+    min-width: 0;
+  }
+  .btn-stack .main { line-height: 1.25; }
+  .btn-stack .sub {
+    font-size: 12.5px;
+    font-weight: 500;
+    opacity: .85;
+    line-height: 1.35;
+  }
+  @media (max-width: 360px) {
+    .btn-primary { font-size: 16px; padding: 14px 16px; }
+    .btn-stack .sub { font-size: 11.5px; }
+  }
+
   .alt-row {
     display: flex;
     gap: 8px;
@@ -468,21 +488,16 @@
 
     <button class="btn-primary" id="go-gpt" disabled>
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.28 9.82a5.98 5.98 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.51-2.9A6.07 6.07 0 0 0 4.98 4.18a5.98 5.98 0 0 0-4 2.9 6.05 6.05 0 0 0 .75 7.1 5.98 5.98 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.52 2.9A5.98 5.98 0 0 0 13.26 24a6.06 6.06 0 0 0 5.77-4.21 5.99 5.99 0 0 0 4-2.9 6.06 6.06 0 0 0-.75-7.06zM13.26 22.43a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.79.79 0 0 0 .39-.68v-6.74l2.02 1.17a.07.07 0 0 1 .04.05v5.58a4.5 4.5 0 0 1-4.49 4.5zM3.6 18.3a4.47 4.47 0 0 1-.53-3l.14.09 4.79 2.76a.77.77 0 0 0 .78 0l5.84-3.37v2.33a.08.08 0 0 1-.03.06L9.74 19.9a4.5 4.5 0 0 1-6.14-1.64zM2.34 7.9a4.49 4.49 0 0 1 2.35-1.97V11.6a.77.77 0 0 0 .38.67l5.82 3.36-2.02 1.17a.08.08 0 0 1-.07 0l-4.84-2.8A4.5 4.5 0 0 1 2.34 7.9zm16.6 3.86-5.83-3.4L15.13 7.2a.08.08 0 0 1 .07 0l4.84 2.8a4.49 4.49 0 0 1-.68 8.1v-5.68a.79.79 0 0 0-.42-.67zm2.01-3.02-.14-.09-4.78-2.79a.78.78 0 0 0-.79 0L9.4 9.23V6.9a.07.07 0 0 1 .03-.06l4.84-2.79a4.5 4.5 0 0 1 6.68 4.66zM8.3 12.86l-2.02-1.16a.08.08 0 0 1-.04-.06V6.07a4.5 4.5 0 0 1 7.37-3.45l-.14.08L8.7 5.46a.79.79 0 0 0-.39.68zm1.1-2.37 2.6-1.5 2.61 1.5v3l-2.6 1.5-2.61-1.5z"/></svg>
-      ChatGPT로 변환하기
+      <span class="btn-stack">
+        <span class="main">ChatGPT로 변환하기</span>
+        <span class="sub">새 창이 열리며 엔터만 눌러주세요</span>
+      </span>
     </button>
 
     <div class="alt-row">
-      <button class="btn-alt" id="go-gemini-text">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c.4 6.4 5.6 11.6 12 12-6.4.4-11.6 5.6-12 12-.4-6.4-5.6-11.6-12-12C6.4 11.6 11.6 6.4 12 0z"/></svg>
-        Gemini
-      </button>
-      <button class="btn-alt" id="go-claude-text">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.7 15.6l4.8-2.7.08-.24-.08-.13h-.24l-.82-.05-2.8-.08-2.43-.1-2.36-.13-.6-.12L0 11.2l.06-.37.5-.34.72.06 1.58.11 2.38.16 1.72.1 2.55.27h.4l.06-.16-.14-.1-.1-.1-2.5-1.7L4.5 7.35l-1.42-1.03-.77-.52-.39-.49-.17-1.07.7-.77.93.06.24.07.94.72 2.02 1.56 2.63 1.94.39.32.15-.11.02-.08-.17-.29L9.1 5.03 7.6 2.44l-.67-1.07-.18-.64a3.1 3.1 0 0 1-.1-.76L7.44 0l.44.15L9.7 2.65l2.94 4.03.46.68.22-.13.1-.53.16-2.1.17-2.58.06-.73.28-.67.55-.36.43.2.35.5-.05.33-.21 1.35-.4 2.11-.27 1.41h.16l.18-.18.73-.97 1.23-1.53.54-.61.63-.67.4-.32h.77l.56.84-.25.87-.79 1-.65.85-.94 1.26-.58 1.01.05.08.14-.01 2.13-.46 1.15-.2 1.38-.24.62.29.07.3-.24.6-1.48.36-1.73.35-2.58.6-.03.03.04.04 1.16.1.5.03h1.21l2.27.17.59.4.36.47-.06.36-.91.46-1.23-.29-2.86-.68-.98-.24h-.14v.08l.82.8 1.5 1.35 1.87 1.75.1.43-.24.34-.25-.04-1.65-1.24-.64-.56-1.44-1.21h-.1v.13l.34.48 1.75 2.64.09.8-.13.27-.45.16-.5-.1-1.02-1.44-1.05-1.6-.85-1.45-.1.06-.5 5.4-.24.28-.54.2-.45-.34-.24-.55.24-1.1.29-1.44.23-1.14.21-1.42.13-.47-.01-.03-.1.01-1.07 1.47-1.63 2.2-1.29 1.38-.31.12-.53-.28.05-.5.3-.43 1.77-2.25.5-.66-.02-.09h-.05l-4.85 3.15-.86.11-.37-.35.05-.57.17-.18 1.44-1z"/></svg>
-        Claude
-      </button>
       <button class="btn-alt" id="copy-text">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        복사
+        프롬프트만 복사
       </button>
     </div>
 
@@ -745,7 +760,7 @@
     window.open(url, "_blank", "noopener");
   });
 
-  // Gemini / Claude — 복사 후 새 창
+  // 복사 후 새 창 (사진 탭에서 사용)
   // copy() 를 .then() 안이 아니라 클릭 핸들러 안에서 바로 호출해야
   // 사용자 제스처가 유지돼 팝업이 차단되지 않는다.
   function copyThenOpen(getPrompt, url, name) {
@@ -755,14 +770,6 @@
      .catch(function () { toast("복사 실패 — '복사' 버튼을 눌러 직접 붙여넣어 주세요"); });
   }
 
-  $("go-gemini-text").addEventListener("click", function () {
-    if (!requireText()) return;
-    copyThenOpen(currentTextPrompt, "https://gemini.google.com/app", "Gemini");
-  });
-  $("go-claude-text").addEventListener("click", function () {
-    if (!requireText()) return;
-    copyThenOpen(currentTextPrompt, "https://claude.ai/new", "Claude");
-  });
   $("copy-text").addEventListener("click", function () {
     if (!requireText()) return;
     copy(currentTextPrompt())
