@@ -506,6 +506,31 @@
   }
   .promo-arrow { flex: none; width: 16px; height: 16px; color: var(--text-faint); }
 
+  /* ---------- 다운로드 버튼 ---------- */
+  .dl-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 13px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    color: var(--text-dim);
+    font-size: 14.5px;
+    font-weight: 600;
+    text-decoration: none;
+    min-height: 44px;
+    transition: border-color .15s, color .15s, background .15s;
+  }
+  .dl-btn:hover {
+    border-color: var(--text-dim);
+    color: var(--text);
+    background: var(--surface-2);
+  }
+  .dl-btn svg { width: 17px; height: 17px; flex: none; }
+
   /* 공정위 지침상 필수. 배너 바로 아래에 붙여 눈에 띄게 둔다. */
   .promo-disclosure {
     margin: 7px 2px 0;
@@ -683,6 +708,12 @@
     </a>
     <p class="promo-disclosure">쿠팡 파트너스 활동의 일환으로 이에 따른 일정액의 수수료를 제공받습니다.</p>
   </div>
+
+  <a class="dl-btn" href="https://mybox.naver.com/share/verify?shareKey=jJYuIrtKYianFJxZ2hMoi63CfIkzwRIKlOA19s8rS8o-ON1kvto0ThEu9w04FwOsYLCkOS-wzZ5Vuyf7ynm7tgQ=&amp;resourceKey=cmVlNzAzMnwzNDcyNTk5NjEyMTI5MzIzMzUyfEZ8MA"
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    무료채팅 프로그램 다운받기
+  </a>
 
   <footer>
     <strong>당근톤</strong>은 당근마켓과 무관한 비공식 도구입니다.<br>
