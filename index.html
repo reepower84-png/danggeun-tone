@@ -569,10 +569,6 @@
     </button>
 
     <div class="alt-row">
-      <button class="btn-alt" id="go-gemini-img">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c.4 6.4 5.6 11.6 12 12-6.4.4-11.6 5.6-12 12-.4-6.4-5.6-11.6-12-12C6.4 11.6 11.6 6.4 12 0z"/></svg>
-        Gemini로 하기
-      </button>
       <button class="btn-alt" id="copy-img">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         프롬프트만 복사
@@ -765,16 +761,6 @@
     window.open(url, "_blank", "noopener");
   });
 
-  // 복사 후 새 창 (사진 탭에서 사용)
-  // copy() 를 .then() 안이 아니라 클릭 핸들러 안에서 바로 호출해야
-  // 사용자 제스처가 유지돼 팝업이 차단되지 않는다.
-  function copyThenOpen(getPrompt, url, name) {
-    var p = copy(getPrompt());
-    window.open(url, "_blank", "noopener");
-    p.then(function () { toast("복사했어요 · " + name + "에서 Ctrl+V"); })
-     .catch(function () { toast("복사 실패 — '복사' 버튼을 눌러 직접 붙여넣어 주세요"); });
-  }
-
   $("copy-text").addEventListener("click", function () {
     if (!requireText()) return;
     copy(currentTextPrompt())
@@ -786,7 +772,7 @@
 
   // mode "await" : 사진보다 프롬프트가 먼저 도착하는 경우(ChatGPT ?q= 자동 전송).
   //                사진을 곧 붙여넣겠다고 알리고, 첫 턴은 한 줄만 답하게 해서 기다리게 한다.
-  // mode "attached" : 사용자가 사진을 먼저 붙인 뒤 프롬프트를 넣는 경우(Gemini 클립보드 방식).
+  // mode "attached" : 사용자가 사진을 먼저 붙인 뒤 프롬프트를 넣는 경우('프롬프트만 복사').
   function buildImagePrompt(item, place, light, mode) {
     var eulReul = josa(item, "을", "를");
     var iGa = josa(item, "이", "가");
@@ -948,13 +934,6 @@
      .catch(function () { toast("사진 복사가 안 돼요 · ChatGPT 창으로 파일을 끌어다 놓으세요"); });
   });
 
-  // Gemini: URL 프리필을 지원하지 않아 프롬프트를 클립보드로 넘긴다.
-  // 이 경우 사용자가 사진을 먼저 붙이므로 "attached" 문구를 쓴다.
-  $("go-gemini-img").addEventListener("click", function () {
-    if (!requireItem()) return;
-    copyThenOpen(function () { return currentImagePrompt("attached"); },
-                 "https://gemini.google.com/app", "Gemini");
-  });
   $("copy-img").addEventListener("click", function () {
     if (!requireItem()) return;
     // 손으로 붙여넣는 용도이므로 사진이 이미 붙어 있는 상황을 가정한다.
