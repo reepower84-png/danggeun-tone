@@ -12,6 +12,8 @@
     --carrot: #FF6F0F;
     --carrot-dark: #E85D00;
     --carrot-soft: #FFF3E8;
+    /* carrot-soft 배경 위 글자용. carrot-dark 를 그대로 쓰면 대비가 3.3:1 로 모자란다. */
+    --carrot-ink: #B84800;
 
     --bg: #FFFFFF;
     --surface: #FFFFFF;
@@ -33,6 +35,7 @@
       --carrot: #FF8534;
       --carrot-dark: #FF6F0F;
       --carrot-soft: #2A1B0E;
+      --carrot-ink: #FFA76B;
 
       --bg: #16181A;
       --surface: #1E2124;
@@ -49,6 +52,7 @@
     --carrot: #FF8534;
     --carrot-dark: #FF6F0F;
     --carrot-soft: #2A1B0E;
+    --carrot-ink: #FFA76B;
 
     --bg: #16181A;
     --surface: #1E2124;
@@ -514,20 +518,19 @@
     gap: 8px;
     margin-top: 10px;
     padding: 13px 16px;
-    background: var(--surface);
-    border: 1px solid var(--border-strong);
+    background: var(--carrot-soft);
+    border: 1px solid color-mix(in srgb, var(--carrot) 32%, transparent);
     border-radius: var(--radius);
-    color: var(--text-dim);
+    color: var(--carrot-ink);
     font-size: 14.5px;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     min-height: 44px;
-    transition: border-color .15s, color .15s, background .15s;
+    transition: border-color .15s, background .15s;
   }
   .dl-btn:hover {
-    border-color: var(--text-dim);
-    color: var(--text);
-    background: var(--surface-2);
+    border-color: var(--carrot);
+    background: color-mix(in srgb, var(--carrot) 12%, var(--carrot-soft));
   }
   .dl-btn svg { width: 17px; height: 17px; flex: none; }
 
